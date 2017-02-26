@@ -1,0 +1,14 @@
+<form class="form-signin" action="{% url 'login:register' %}" method="post">
+    <h2 class="form-signin-heading">Register</h2>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+    <label for="first_name" class="sr-only">First Name</label>
+    <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name" required="">
+    <label for="last_name" class="sr-only">Last Name</label>
+    <input type="text" id="last_name" name="last_name" class="form-control" placeholder="Last Name" required="">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+    <label for="inputPassword2" class="sr-only">Confirm Password</label>
+    <input type="password" name="password_confirm" id="inputPassword2" class="form-control" placeholder="Confirm Password" required="">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+</form>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<title>{% block title %}Login{% endblock %}</title>
+	<meta name="description" content="Jon wanted nothing more. No, he had to tell himself, those days are gone. The realization twisted in his belly like a knife. They had chosen him to rule. The Wall was his, and their lives were his as well. A lord may love the men that he commands, he could hear his lord father saying, but he cannot be a friend to them. One day he may need to sit in judgement on them, or send them forth to die.">
+	<link rel="icon"
+		  type="image/png"
+		  href="http://tonjohn.com/favicon.png">
+	{% load staticfiles %}
+	<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<style type="text/css">
+    </style>
+</head>
+<body>
+{% block body %}
+    {% block navbar %}
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">{% block brand %}MyApp{% endblock %}</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if request.session.is_authed %}
+                        <li class="active"><a href="{% url 'login:edit_self' %}">{{ request.session.email }}</a></l>
+                        <li><a href="{% url 'login:logout' %}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login:login' %}">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+    {% endblock %}
+    {% block alerts %}
+    {% if messages %}
+        <div id="alerts" class="container">
+        {% for message in messages %}
+            <div class="alert {%if message.level_tag == 'error' %}alert-danger{%else%}alert-success{% endif %}" role="alert">{{message.message}}</div>
+        {% endfor %}
+        </div>
+    {% endif %}
+    {% endblock %}
+    {% block main_content %}
+    {% endblock %}
+    {% block footer %}
+    <div class="container">
+        <hr>
+        <footer>
+            <p>© 2017 Bird in a Jar, Inc.</p>
+        </footer>
+    </div>
+    {% endblock %}
+{% endblock %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Login / Registration - Success!</title>
+	<meta name="description" content="Jon wanted nothing more. No, he had to tell himself, those days are gone. The realization twisted in his belly like a knife. They had chosen him to rule. The Wall was his, and their lives were his as well. A lord may love the men that he commands, he could hear his lord father saying, but he cannot be a friend to them. One day he may need to sit in judgement on them, or send them forth to die.">
+	<link rel="icon"
+		  type="image/png"
+		  href="http://tonjohn.com/favicon.png">
+  	{% load staticfiles %}
+	<!-- linking a css style sheet -->
+	<link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+	<div class="container">
+
+        {% if messages %}
+            <section id="notifications">
+                {% for msg in messages %}
+                    <p class="{{msg.level_tag}}">{{msg.message}}</p>
+                {% endfor %}
+            </section>
+        {% endif %}
+		<section>
+			<h2>Welcome, {{request.session.first_name}}! <a href="{% url 'login:logout' %}">Logout</a></h2>
+			<h3>Index:</h3>
+		</section>
+	</div>
+</body>
+</html>

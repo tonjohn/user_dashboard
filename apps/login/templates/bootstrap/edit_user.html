@@ -1,0 +1,14 @@
+{% extends "bootstrap/base.html" %}
+{% block main_content %}
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="{% url 'login:index' %}">Home</a></li>
+        <li><a href="{% url 'login:show' userid=user.id %}">User</a></li>
+        {%if user.id == request.session.userid %}
+            <li class="active">Edit Profile</li>
+        {% else %}
+            <li class="active">Edit #{{user.id}}</li>
+        {% endif%}
+    </ol>
+</div>
+{% endblock %}

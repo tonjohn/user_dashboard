@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block pageheader %}Create your account{% endblock %}
+{% block formaction %}{% url 'login:register' %}{% endblock %}
+{% block addfields %}
+<div class="field">
+    <div class="ui left icon input">
+        <i class="lock icon"></i>
+        <input type="password" name="confirm_password" placeholder="Confirm Password">
+    </div>
+</div>
+<div class="field">
+    <div class="ui left icon input">
+        <i class="user icon"></i>
+        <input type="text" name="first_name" placeholder="First Name">
+    </div>
+</div>
+<div class="field">
+    <div class="ui left icon input">
+        <i class="user icon"></i>
+        <input type="text" name="last_name" placeholder="Last Name">
+    </div>
+</div>
+{% endblock %}
+{% block submitbtn %}Register{% endblock %}
+
+{% block signup %}
+<div class="ui message">
+    Have an account? <a href="{% url 'login:login' %}">Login</a>
+</div>
+{% endblock %}
